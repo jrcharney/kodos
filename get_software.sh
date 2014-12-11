@@ -56,7 +56,8 @@ urls = ( \
 #		In other words, you can remove that trailing "/download" part. Curl should redirect thanks to -L.
 #		So this TODO point is solved.  Unless it needs that "prodownloads" part. Nope. Not really. We're good!
 
-for url in "${urls[@]}"; do
+extraction(){
+ url=$1
  pkg=${url##*/}					# Strip out the URL
  tpkg=${pkg,,}					# Lowercase the package string for testing
  fix=${pkg##*.}					# everything after the last period
@@ -65,31 +66,21 @@ for url in "${urls[@]}"; do
  case ${tpkg##*.} in			# Test based on everything after the last period
   tgz)		extract="tar xz" ;;
   tbz|tbz2)	extract="tar xj" ;;
-  gz)
+  gz|bz|bz2|xz)
   	if [[ ${dir,,} =~ \.tar$ ]]; then
-  	 fix="${dir##*.}.${fix}"
-  	 dir="${dir%.*}
-  	 extract="tar xz"
+  		fix="${dir##*.}.${fix}"
+  	 	dir="${dir%.*}"
+  	 case ${tpkg##*.} in
+  	  gz)		extract="tar xz" ;;
+  	  bz|bz2)	extract="tar xj" ;;
+  	  xz)		extract="tar xJ" ;;
+  	 esac
   	else
-  	 extract="gunzip"
-  	fi
-  	;;
-  bz|bz2)
-  	if [[ ${dir,,} =~ \.tar$ ]]; then
-  	 fix="${dir##*.}.${fix}"
-  	 dir="${dir%.*}
-  	 extract="tar xj"
-  	else
-  	 extract="bunzip2"
-  	fi
-  	;;
-  xz)
-  	if [[ ${dir,,} =~ \.tar$ ]]; then
-  	 fix="${dir##*.}.${fix}"
-  	 dir="${dir%.*}
-  	 extract="tar xJ"
-  	else
-  	 extract="gunzip"
+  	 case ${tpkg##*.} in
+  	  gz)		extract="gunzip" ;;
+  	  bz|bz2)	extract="bunzip2" ;;
+  	  xz)		extract="unxz" ;;
+  	 esac
   	fi
   	;;
   tar)		extract="tar x" ;;
@@ -100,5 +91,9 @@ for url in "${urls[@]}"; do
   git)	;;			# Do nothing, for now.
   *)	;;			# Do nothing
  esac
- curl -SLO "${url}" | "${extract}"
+ echo "${extract}"
+}
+
+for url in "${urls[@]}"; do
+ curl -SLO "${url}" | $(extraction "${url}")
 done
