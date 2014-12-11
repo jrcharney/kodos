@@ -95,5 +95,6 @@ extraction(){
 }
 
 for url in "${urls[@]}"; do
- curl -SLO "${url}" | $(extraction "${url}")
+ # Don't use -O in curl when piping to an extraction command.
+ curl -SL "${url}" | $(extraction "${url}")
 done
