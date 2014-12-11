@@ -7,7 +7,7 @@ A Linux from Scratch style Distro for Odroid users and eventually anyone else wh
 
 Kodos is a Linux From Scratch distribution that allows you to do all the things Ubuntu, Debian, Raspbian and a few other Linux distros would never do.
 
-## Why do this? Aren't there restructions?
+## Why do this? Aren't there restrictions?
 
 To heck with what the Unix and Linux beards think!  You want to use Linux and tell your OSX wannabe hacker friends you don't need a Mac to have an awesome operating system.  The parts are all there to make Linux awesome, unfortunately, most binary distributions choose to half-ass their approach and the result is you practically need to uninstall the entire damn operating system just to make one project you downloaded off GitHub work.
 
@@ -71,6 +71,8 @@ emacs       # because some people like to torture themselves
 
 X           # I can't imagine Linux without it
 fluxbox     # I go a bone to pick with old gtk+ versions being using with GNOME
+vnc         # Remote access to another computer
+ssl         # Also important, espeically if you are using VNC.
 
 gdk-pixbuf
 cairo
@@ -164,4 +166,20 @@ ice-weasel      # worse than midori. Firefox clone for ARM. It thinks ARM only i
 angular-js      # If you want to use new attributes in HTML5 that aren't part of HTML5, USE XML!
 ```
 
-What else am I missing?
+What else am I missing?  Send me an email.  Or better yet, Send me a tweet @jrcharney
+
+## OK, this is a list of software, how do I put it together?
+
+The answer for "in what order", I'm still looking into that.  The answer for "using what" is clearly "cross-compiling".  This means that you'll need a more powerful computer (more than likely a desktop computer) to compile it for some other computer.
+
+## But what if I only have one computer?
+
+No worries.  I'm hoping to make an image file that can be `dd`'d to an SD card and mounted from there.  Alternatively, a live image would be great too.
+
+## Installing from source is easy, but what if I want to upgrade or remove something?
+
+Good question.  I hope to make Kodos as modular as just putting a Vim plugin in the `~/.vim` directory.  Of course with exception to some system critical stuff which should stay on the computer.
+
+I must admit, I'm still pretty new to using source-compiled stuff for a lot of things, but using them is definitely way better than using the pre-packaged binaries.
+
+Using pre-packaged binaries is a lot like using the old rabbit ears antenna with a new HDTV.  The old antenna is intended for VHF, while the new TV strictly uses UHF and requires something that will convert those over-the-air digital singals into a picture that the old rabbit ears can't do.
