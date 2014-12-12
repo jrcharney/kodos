@@ -7,6 +7,8 @@ A Linux from Scratch style Distro for Odroid users and eventually anyone else wh
 
 Kodos is a Linux From Scratch distribution that allows you to do all the things Ubuntu, Debian, Raspbian and a few other Linux distros would never do.
 
+NOTE: This project is still in the process of gathering resources. Until this paragraph is removed, it might not be ideal to clone this git repo yet.
+
 ## Why do this? Aren't there restrictions?
 
 To heck with what the Unix and Linux beards think!  You want to use Linux and tell your OSX wannabe hacker friends you don't need a Mac to have an awesome operating system.  The parts are all there to make Linux awesome, unfortunately, most binary distributions choose to half-ass their approach and the result is you practically need to uninstall the entire damn operating system just to make one project you downloaded off GitHub work.
@@ -83,7 +85,7 @@ glib
 gobject-introspection
 keybinder
 clutter
-finalterm   # I wanted to try this out, but it requires all that other stuff
+finalterm   # I wanted to try this out, but it requires all that other stuff. See https://github.com/p-e-w/finalterm
 gimp        # Raster graphics and GIF animation. It's what gtk was meant for.
             # Good luck trying to us it on an Odroid U3 though.
 inkscape    # SVG graphics.  Basically uses the same resources as The GIMP. 
@@ -99,7 +101,7 @@ xpdf
 # HDMI stuff
 ```
 
-What won't be installed with Kodos
+What won't be installed with Kodos, but should able to be installed when done.
 
 ```
 ruby        # Go to rvm.io and install it from there.  Ditto for jRuby and Rails
@@ -124,6 +126,7 @@ jquery
 metor       # I read it was like rails but for node.
 sass
 haml
+mathjax
 
 wireshark   # Hacker stuff.  Compiled on my odroid but I think it broke when I upgraded something.
 armitage    # It's metasploit with extras. Needs an ARM distro.
