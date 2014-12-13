@@ -18,6 +18,9 @@
 # http://ftp.gnu.org/gnu/
 # http://ftp.openbsd.org/pub/OpenBSD/
 # http://cgit.freedesktop.org/xorg/
+# http://www.freedesktop.org/software/
+# https://pypi.python.org/pypi/ (For Python)
+# http://download.gimp.org/pub/ (For GIMP)
 # DO NOT INCLUDE http://freecode.com/ links. The Freecode guys aren't updating anymore.
 urls = ( \
 "http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz" \
@@ -50,6 +53,7 @@ urls = ( \
 "http://ftp.gnu.org/gnu/less/less-451.tar.gz" \
 "http://www.cmake.org/files/v3.1/cmake-3.1.0-rc3.tar.gz" \
 "http://www.cpan.org/src/5.0/perl-5.20.1.tar.gz" \
+"https://www.python.org/ftp/python/2.7.9/Python-2.7.9.tar.xz" \
 "http://curl.haxx.se/download/curl-7.39.0.tar.bz2" \
 "https://www.openssl.org/source/openssl-1.0.1j.tar.gz" \
 "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.7p1.tar.gz" \
@@ -66,13 +70,41 @@ urls = ( \
 "https://launchpad.net/intltool/trunk/0.50.2/+download/intltool-0.50.2.tar.gz" \
 "http://hisham.hm/htop/releases/1.0.3/htop-1.0.3.tar.gz" \
 "http://eden-feed.erg.abdn.ac.uk/wavemon/stable-releases/wavemon-0.7.6.tar.bz2" \
+"http://www.imagemagick.org/download/ImageMagick.tar.gz" \
+"http://sourceforge.net/projects/numpy/files/NumPy/1.9.1/numpy-1.9.1.tar.gz" \
+"http://sourceforge.net/projects/scipy/files/scipy/0.14.0/scipy-0.14.0.tar.gz" \
+"https://downloads.sourceforge.net/project/matplotlib/matplotlib/matplotlib-1.4.2/matplotlib-1.4.2.tar.gz" \
+"https://github.com/ipython/ipython/archive/rel-2.3.1.tar.gz" \
+"https://github.com/pydata/pandas/archive/v0.15.2.tar.gz" \
+"https://github.com/sympy/sympy/archive/sympy-0.7.6.tar.gz" \
+"https://pypi.python.org/packages/source/n/nose/nose-1.3.4.tar.gz" \
+"http://pkgconfig.freedesktop.org/releases/pkg-config-0.28.tar.gz" \
+"http://www.freedesktop.org/software/fontconfig/release/fontconfig-2.11.1.tar.bz2" \
+"http://www.freedesktop.org/software/fontconfig/webfonts/webfonts.tar.gz" \
+"http://download.gimp.org/pub/babl/0.1/babl-0.1.10.tar.bz2" \
+"http://download.gimp.org/pub/gegl/0.2/gegl-0.2.0.tar.bz2" \
+"http://prdownloads.sourceforge.net/aa-project/aalib-1.4rc4.tar.gz" \
+"http://downloads.sourceforge.net/project/libexif/libexif/0.6.21/libexif-0.6.21.tar.bz2" \
+"http://zlib.net/zlib-1.2.8.tar.xz" \
+"http://prdownloads.sourceforge.net/libpng/libpng-1.6.15.tar.xz" \
+"http://download.gimp.org/pub/gimp/v2.8/gimp-2.8.14.tar.bz2" \
+"http://downloads.ghostscript.com/public/ghostscript-9.15.tar.gz" \
+"http://downloads.sourceforge.net/inkscape/inkscape-0.48.5.tar.bz2" \
+"http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.20.tar.bz2" \
+"http://invisible-island.net/datafiles/release/ncurses.tar.gz" \
+"http://www.freedesktop.org/software/systemd/systemd-218.tar.xz" \
 
 )		# This list will continue to grow.
 
 # NOTE: I really want ot use Fluxbox as a window manager. See http://fluxbox.org/download/ for styles.
-
+# NOTE: ImageMagick might have some slightly different instructions. Check http://imagemagick.org/script/install-source.php first.
+# NOTE: We're installing Python 2 still.
+# NOTE: We're also including the SciPy stack! (NumPy is your friend!)
+# TODO: Do I really want to install Qt? (I'll need to, tragicly)
+# TODO: Some optional GIMP resources were not installed because they were really old or their sites no longer existed.
 # TODO: Microsoft Fonts
 # TODO: Mac Fonts? If they exist.
+
 
 # TODO: Test protocols!
 # TODO: Test URL sites. Do not extract if from github.com!
