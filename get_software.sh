@@ -95,6 +95,7 @@ urls = ( \
 "http://www.freedesktop.org/software/systemd/systemd-218.tar.xz" \
 "http://downloads.sourceforge.net/tmux/tmux-1.9a.tar.gz" \
 "https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz" \
+"https://transmission.cachefly.net/transmission-2.84.tar.xz" \
 )		# This list will continue to grow.
 
 # NOTE: I really want ot use Fluxbox as a window manager. See http://fluxbox.org/download/ for styles.
@@ -105,6 +106,8 @@ urls = ( \
 # TODO: Some optional GIMP resources were not installed because they were really old or their sites no longer existed.
 # TODO: Microsoft Fonts
 # TODO: Mac Fonts? If they exist.
+# NOTE: Why yes, that is Transmission Bit Torrent client.  Everyone should use some kind of torrenting software.
+# TODO: Figure out how to use I2P (https://geti2p.net/en/)
 
 
 # TODO: Test protocols!
