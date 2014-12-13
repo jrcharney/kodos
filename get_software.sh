@@ -93,7 +93,8 @@ urls = ( \
 "http://dist.schmorp.de/rxvt-unicode/rxvt-unicode-9.20.tar.bz2" \
 "http://invisible-island.net/datafiles/release/ncurses.tar.gz" \
 "http://www.freedesktop.org/software/systemd/systemd-218.tar.xz" \
-
+"http://downloads.sourceforge.net/tmux/tmux-1.9a.tar.gz" \
+"https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz" \
 )		# This list will continue to grow.
 
 # NOTE: I really want ot use Fluxbox as a window manager. See http://fluxbox.org/download/ for styles.
