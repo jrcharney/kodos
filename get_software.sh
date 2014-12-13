@@ -57,6 +57,7 @@ urls = ( \
 "http://curl.haxx.se/download/curl-7.39.0.tar.bz2" \
 "https://www.openssl.org/source/openssl-1.0.1j.tar.gz" \
 "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.7p1.tar.gz" \
+"http://download.gnome.org/sources/vala/0.26/vala-0.26.0.tar.xz" \
 "https://github.com/engla/keybinder" \
 "http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.5.tar.xz" \
 "http://ftp.gnome.org/pub/gnome/sources/glib/2.42/glib-2.42.1.tar.xz" \
@@ -98,6 +99,7 @@ urls = ( \
 "https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz" \
 "https://transmission.cachefly.net/transmission-2.84.tar.xz" \
 "ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2" \
+"http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.tar.bz2" \
 )		# This list will continue to grow.
 
 # NOTE: I really want ot use Fluxbox as a window manager. See http://fluxbox.org/download/ for styles.
@@ -113,6 +115,7 @@ urls = ( \
 # TODO: Do I want to install Mercurial? Subversion? CVS?
 #		An example of using Mercurial is on the Vim download page. http://www.vim.org/download.php
 # TODO: What about Vim plugins like Pathogen (https://github.com/tpope/vim-pathogen) and NERDtree (https://github.com/scrooloose/nerdtree)?
+# NOTE: `dpkg --get-selections | less -eFMXR` is a good way to browse through a list of installed software packages on Debian. Try using that as a guide to fill in the blanks.
 
 # TODO: Test protocols!
 # TODO: Test URL sites. Do not extract if from github.com!
