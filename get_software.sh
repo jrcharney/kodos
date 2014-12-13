@@ -65,6 +65,7 @@ urls = ( \
 "http://ftp.gnome.org/pub/gnome/sources/atk/2.14/atk-2.14.0.tar.xz" \
 "http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.42/gobject-introspection-1.42.0.tar.xz" \
 "https://download.gnome.org/sources/clutter-gtk/1.6/clutter-gtk-1.6.0.tar.xz" \
+"https://github.com/clutter-project/mx.git" \
 "http://sourceforge.net/projects/fluxbox/files/fluxbox/1.3.5/fluxbox-1.3.5.tar.bz2" \
 "http://ftp.gnome.org/pub/gnome/sources/libnotify/0.7/libnotify-0.7.6.tar.xz" \
 "https://launchpad.net/intltool/trunk/0.50.2/+download/intltool-0.50.2.tar.gz" \
@@ -96,6 +97,7 @@ urls = ( \
 "http://downloads.sourceforge.net/tmux/tmux-1.9a.tar.gz" \
 "https://github.com/downloads/libevent/libevent/libevent-2.0.21-stable.tar.gz" \
 "https://transmission.cachefly.net/transmission-2.84.tar.xz" \
+"ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2" \
 )		# This list will continue to grow.
 
 # NOTE: I really want ot use Fluxbox as a window manager. See http://fluxbox.org/download/ for styles.
@@ -108,7 +110,9 @@ urls = ( \
 # TODO: Mac Fonts? If they exist.
 # NOTE: Why yes, that is Transmission Bit Torrent client.  Everyone should use some kind of torrenting software.
 # TODO: Figure out how to use I2P (https://geti2p.net/en/)
-
+# TODO: Do I want to install Mercurial? Subversion? CVS?
+#		An example of using Mercurial is on the Vim download page. http://www.vim.org/download.php
+# TODO: What about Vim plugins like Pathogen (https://github.com/tpope/vim-pathogen) and NERDtree (https://github.com/scrooloose/nerdtree)?
 
 # TODO: Test protocols!
 # TODO: Test URL sites. Do not extract if from github.com!
@@ -150,7 +154,7 @@ extraction(){
   shar)		;;		# look into this
   rar)		;;		# look into this. It might just be a simple "unrar"
   zip)		extract="unzip" ;;
-  git)	;;			# Do nothing, for now.	# TODO: Better yet, let's not extract that type here.
+  git)	 ;;			# Do nothing, for now.	# TODO: Better yet, let's not extract that type here.
   *)	;;			# Do nothing
  esac
  echo "${extract}"
