@@ -12,6 +12,13 @@
 # TODO: Get a list of most up-to-date urls
 # TODO: Don't extract URLs that use the git protocol or have a .git suffix.
 #		In fact, more than likely, anything from github.com will not be extracted.
+# Sites with a lot of packages:
+# http://ftp.gnome.org/pub/gnome/sources/
+# https://download.gnome.org/sources/
+# http://ftp.gnu.org/gnu/
+# http://ftp.openbsd.org/pub/OpenBSD/
+# http://cgit.freedesktop.org/xorg/
+# DO NOT INCLUDE http://freecode.com/ links. The Freecode guys aren't updating anymore.
 urls = ( \
 "http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz" \
 "http://ftp.gnu.org/gnu/binutils/binutils-2.24.tar.bz2" \
@@ -46,9 +53,26 @@ urls = ( \
 "http://curl.haxx.se/download/curl-7.39.0.tar.bz2" \
 "https://www.openssl.org/source/openssl-1.0.1j.tar.gz" \
 "http://ftp.openbsd.org/pub/OpenBSD/OpenSSH/portable/openssh-6.7p1.tar.gz" \
+"https://github.com/engla/keybinder" \
+"http://ftp.gnome.org/pub/gnome/sources/gtk+/3.14/gtk+-3.14.5.tar.xz" \
+"http://ftp.gnome.org/pub/gnome/sources/glib/2.42/glib-2.42.1.tar.xz" \
+"http://ftp.gnome.org/pub/gnome/sources/pango/1.36/pango-1.36.8.tar.xz" \
+"http://ftp.gnome.org/pub/gnome/sources/gdk-pixbuf/2.30/gdk-pixbuf-2.30.8.tar.xz" \
+"http://ftp.gnome.org/pub/gnome/sources/atk/2.14/atk-2.14.0.tar.xz" \
+"http://ftp.gnome.org/pub/gnome/sources/gobject-introspection/1.42/gobject-introspection-1.42.0.tar.xz" \
+"https://download.gnome.org/sources/clutter-gtk/1.6/clutter-gtk-1.6.0.tar.xz" \
+"http://sourceforge.net/projects/fluxbox/files/fluxbox/1.3.5/fluxbox-1.3.5.tar.bz2" \
+"http://ftp.gnome.org/pub/gnome/sources/libnotify/0.7/libnotify-0.7.6.tar.xz" \
+"https://launchpad.net/intltool/trunk/0.50.2/+download/intltool-0.50.2.tar.gz" \
+"http://hisham.hm/htop/releases/1.0.3/htop-1.0.3.tar.gz" \
+"http://eden-feed.erg.abdn.ac.uk/wavemon/stable-releases/wavemon-0.7.6.tar.bz2" \
+
 )		# This list will continue to grow.
 
+# NOTE: I really want ot use Fluxbox as a window manager. See http://fluxbox.org/download/ for styles.
+
 # TODO: Microsoft Fonts
+# TODO: Mac Fonts? If they exist.
 
 # TODO: Test protocols!
 # TODO: Test URL sites. Do not extract if from github.com!
@@ -56,6 +80,8 @@ urls = ( \
 #		In other words, you can remove that trailing "/download" part. Curl should redirect thanks to -L.
 #		So this TODO point is solved.  Unless it needs that "prodownloads" part. Nope. Not really. We're good!
 
+# Func: extraction
+# Info: execute extraction instructions based on various url extensions
 extraction(){
  url=$1
  pkg=${url##*/}					# Strip out the URL
@@ -88,13 +114,40 @@ extraction(){
   shar)		;;		# look into this
   rar)		;;		# look into this. It might just be a simple "unrar"
   zip)		extract="unzip" ;;
-  git)	;;			# Do nothing, for now.
+  git)	;;			# Do nothing, for now.	# TODO: Better yet, let's not extract that type here.
   *)	;;			# Do nothing
  esac
  echo "${extract}"
 }
 
 for url in "${urls[@]}"; do
- # Don't use -O in curl when piping to an extraction command.
- curl -SL "${url}" | $(extraction "${url}")
+ # Download instructions will need to vary depending on the protocol used to fetch software.
+ case "${url%%:*}" in
+  http|https|ftp)
+   # TODO: While we test package file extensions for the most part using the extraction() method, 
+   #	tests for git repos and .git files should be done here.
+   # Don't use -O in curl when piping to an extraction command.
+   fix="${url,,}"			# lowercase the url string just in case
+   case "${fix##*.}" in
+    git) git clone $url ;;			# Clone git projects
+    *)   curl -SL "${url}" | $(extraction "${url}") ;;
+   esac ;;
+  git)	git clone $url ;;	# TODO: This might not work for all git
+  #file)	;;	# Maybe later. Use it as a hack to extract locally
+  *)	;;	# For now, do nothing. An error will likely need to be thrown later.
 done
+
+
+# Making projects from source
+# The standard recipe for making a project from source is generally
+#	./configure && make && sudo make install
+# I like to add an extra step
+#	./configure && make && sudo make install && sudo ldconfig
+# For most CMake made projects, you need to create a build directory first
+#   mkdir build && cd build
+#   cmake .. && make && sudo make install
+# As per my preference, I like to run `sudo ldconfig` after the make install.
+# For Linux From Scratch distros, adminstrators have to option to put change the path to /usr/bin.
+# Some times, people will install experimental software in the /opt/ directory so they can delete everything related to it.  This is ideal for a couple of items.
+# Users do have the option of changing the prefix of the install using "-DPREFIX" (shorthand of "-D -PREFIX") or "-PREFIX" or something like that. YMMV.
+# And then there are the changes to the ~/.bashrc file (or some other file like it.) But we'll talk about that later.
