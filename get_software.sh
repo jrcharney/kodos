@@ -100,6 +100,21 @@ urls = ( \
 "https://transmission.cachefly.net/transmission-2.84.tar.xz" \
 "ftp://ftp.vim.org/pub/vim/unix/vim-7.4.tar.bz2" \
 "http://sourceforge.net/projects/boost/files/boost/1.57.0/boost_1_57_0.tar.bz2" \
+"http://www.pygame.org/ftp/pygame-1.9.1release.tar.gz" \
+"https://www.libsdl.org/release/SDL2-2.0.3.tar.gz" \
+"ftp://ftp.gnupg.org/gcrypt/libgpg-error/libgpg-error-1.17.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/libgcrypt/libgcrypt-1.6.2.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/libksba/libksba-1.3.2.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/libassuan/libassuan-2.1.3.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/pinentry/pinentry-0.9.0.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/gpgme/gpgme-1.5.2.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/gpa/gpa-0.9.6.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/dirmngr/dirmngr-1.1.0.tar.bz2" \
+"ftp://ftp.gnupg.org/gcrypt/gnupg/gnupg-2.1.0.tar.bz2" \
+"http://mercurial.selenic.com/release/mercurial-3.2.2.tar.gz" \
+"https://bitbucket.org/dholth/pysdl2-cffi" \
+"https://bitbucket.org/marcusva/py-sdl2" \
+
 )		# This list will continue to grow.
 
 # NOTE: I really want ot use Fluxbox as a window manager. See http://fluxbox.org/download/ for styles.
@@ -114,6 +129,8 @@ urls = ( \
 # TODO: Figure out how to use I2P (https://geti2p.net/en/)
 # TODO: Do I want to install Mercurial? Subversion? CVS?
 #		An example of using Mercurial is on the Vim download page. http://www.vim.org/download.php
+#		Yeah, I'll need Mercurual if I want to get packages from BitBucket.
+#			Vim suggests using the Mercurial install method to keep Vim up to date
 # TODO: What about Vim plugins like Pathogen (https://github.com/tpope/vim-pathogen) and NERDtree (https://github.com/scrooloose/nerdtree)?
 # NOTE: `dpkg --get-selections | less -eFMXR` is a good way to browse through a list of installed software packages on Debian. Try using that as a guide to fill in the blanks.
 
@@ -122,6 +139,8 @@ urls = ( \
 # TODO: If a site is from sourceforge, make sure that curl saves it as the file it should be downloading.
 #		In other words, you can remove that trailing "/download" part. Curl should redirect thanks to -L.
 #		So this TODO point is solved.  Unless it needs that "prodownloads" part. Nope. Not really. We're good!
+# TODO: Odroid supports OpenGL. Don't be afraid to look up Mesa packages.
+# TODO: If there is some libSDL stuff missing, try going back and downloading the historic package as well.
 
 # Func: extraction
 # Info: execute extraction instructions based on various url extensions
@@ -170,10 +189,18 @@ for url in "${urls[@]}"; do
    # TODO: While we test package file extensions for the most part using the extraction() method, 
    #	tests for git repos and .git files should be done here.
    # Don't use -O in curl when piping to an extraction command.
+   # TODO: Test for various URLs here that use git or Mercurial.
+   # git will need to be used for github URLs
+   # hg will need to be used for bitbucket URLs
    fix="${url,,}"			# lowercase the url string just in case
    case "${fix##*.}" in
-    git) git clone $url ;;			# Clone git projects
-    *)   curl -SL "${url}" | $(extraction "${url}") ;;
+    git) git clone "${url}" ;;			# Clone git projects
+    *)
+      # MAJOR TODO: Extract the base URL to be used here for sites like github and bitbucket
+      case "${site}" in
+      "github")    git clone "${url}"
+      "bitbucket") hg clone "${url}"		# TODO: hopefully I do not need to ad another argument to create a directory
+      *) curl -SL "${url}" | $(extraction "${url}") ;;
    esac ;;
   git)	git clone $url ;;	# TODO: This might not work for all git
   #file)	;;	# Maybe later. Use it as a hack to extract locally
