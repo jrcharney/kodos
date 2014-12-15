@@ -54,14 +54,19 @@ domainport=${domain##*:}		# Returns the domain port if there is one.
 urlfilepath=${noprotocol#*/}	# Everything after the first "/".  URLs should end with "/"
 filepath=${urlfilepath%/*}		# The file path not including the file.  File paths should ALWAYS end with "/" otherwise they will be interpreted as a file.
 filename=${urlfilename##*/}		# The file name.  Be aware that some directories have periods (".") in them.  TODO: If only there was some way to remotely detect if a file was a directory or file.  There might be, but I'm drawing a blank at the moment.
-[[ $urlfilepath == $filepath ]] & filepath=""		# If there is no file path, set it to blank
+[[ $urlfilepath == $filepath ]] && filepath=""		# If there is no file path, set it to blank
 
 # FILE
 # TODO: What if a file has a version number that uses periods?
 # The most we really want to to is first and second level stuff.
 # Second level stuff should only occur if a first level suffix is recongized.
 # For example, we can return .gz as the file type of a file then look to see if it as a .tar suffix.
-filetype=
-filesuffix=
-filesubfix=
-filesuperfix=
+# Generally most file extensions start with a letter.  So for now, let's not deal with .7z (7zip compressed) files
+if [[ -n $filename ]]; then
+	# filetype=
+	filesuffix=${filename%%.[0-9]*}		# Works if there is no version number in teh file name
+	[[ $filename == $filesuffix ]] && filesuffix=${filesuffix#*.}
+	[[ $filename == $filesuffix ]] && filesuffix=""
+	# filesubfix=
+	# filesuperfix=
+fi
