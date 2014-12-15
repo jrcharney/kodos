@@ -64,9 +64,10 @@ filename=${urlfilename##*/}		# The file name.  Be aware that some directories ha
 # Generally most file extensions start with a letter.  So for now, let's not deal with .7z (7zip compressed) files
 if [[ -n $filename ]]; then
 	# filetype=
-	filesuffix=${filename%%.[0-9]*}		# Works if there is no version number in teh file name
-	[[ $filename == $filesuffix ]] && filesuffix=${filesuffix#*.}
-	[[ $filename == $filesuffix ]] && filesuffix=""
+	filesuffix=${filename%%.[0-9]*}		# Works if there is no version number in the file name
+	[[ $filename == $filesuffix ]] && filesuffix=${filesuffix#*.}	# if there is a version number attached, remove it. This might happen if the filesuffix and the filename are the same.
+	[[ $filename == $filesuffix ]] && filesuffix=""			# And if it's still like that, forget about it. Set filesuffix to blank.
+	# These two variables I was think about using for things like tarballs.  I haven't decided what to do with this yet.
 	# filesubfix=
 	# filesuperfix=
 fi
