@@ -30,10 +30,10 @@ Because I've already learned how to use `yum` and `apt-get`.  I don't want to le
 url=$1          # URL of a package, let's say it a .tar.xz file
 $extract=xJvf   # extract based on url file's extension. A function would be used here
 $project=       # The folder that this download will likely be in.  A function would be used here
-curl -SLO $url | tar $extract && cd project && ./configure && make && sudo make install && sudo ldconfig
+curl -SL $url | tar $extract && cd project && ./configure && make && sudo make install && sudo ldconfig
 ```
 
-Of course that's just a idealized user case.  Other thing will be though of such as if you were cloning a project from GitHub or of the project requires `cmake` style instructions where you need to `cd build && cmake ..`.
+Of course that's just a idealized user case.  Other thing will be though of such as if you were cloning a project from GitHub or of the project requires `cmake` style instructions where you need to `cd build && cmake ..`.  And don't get me started on Concurrent Version Systems software (Git, Mercurial, CVS, and Subversion)!
 
 The whole point building a Linux distro, installing or upgrading software, or any other task that involves using better newer Linux software from source (as it was designed for), shouldn't require disconnecting yourself from the rest of the world for the next few days and should not be reserved to a small group.  The first reason is just bad for your health.  The second reason is contradictory to having Free Open Source Software (FOSS).
 
@@ -113,7 +113,7 @@ mysql       # It's still good. I just don't want to force it upon you.
 php         # It's peanut butter to mysql/mariadb's jelly.
 nginx       # Nimble, configurable, and way more tolerable than Apache Httpd.
 mariadb     # Again you can install this or install mysql
-mongodb     # ditto
+mongodb     # ditto, but for a NoSQL solution
 libreoffice # You'll need java first before using it.  
             # Frankly, I want Kodos to use Google Chrome so that Google Docs, Sheets, and Slides can be used.
 Qt          # For now anyway.  It's a pain in the neck to install, but you'll need it eventually.
@@ -170,6 +170,8 @@ midori          # man that browser SUCKS!
 ice-weasel      # worse than midori. Firefox clone for ARM. It thinks ARM only is for mobile devices so it sends you to mobile sites. Being stupid is worse than being sucky.
 angular-js      # If you want to use new attributes in HTML5 that aren't part of HTML5, USE XML!
 ```
+
+The `get_software.sh` script has a whole list of stuff I (for the most part) have though about.
 
 What else am I missing?  Send me an email.  Or better yet, Send me a tweet @jrcharney
 
