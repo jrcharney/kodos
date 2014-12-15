@@ -15,7 +15,9 @@ To heck with what the Unix and Linux beards think!  You want to use Linux and te
 
 ## Why LFS instead of Binary? Won't it break if (insert software here) is upgraded?
 
-You shouldn't have to wait for the Debian or RedHat folks
+You shouldn't have to wait for the Debian or RedHat folks for an upgrade.  But you also shouldn't have to worry about if something breaks.  One of the goals of Kodos is to resolve that problem.  Something like a "No Fear" upgrade script that you can use upgrade software at the **source** level rather than relying on binaries that are dependent upon architecture and detailed settings.
+
+Frankly, I don't really care too much as to how much I need to know about my computer except for the features, what they features should do and what the features shouldn't do.  Leave all the core worries to the Unix beards, Linus Torvalds, and all the other big wigs.
 
 ## Why not use ArchOS?
 
