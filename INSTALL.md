@@ -12,7 +12,7 @@ Consider Kodos as the Plan-Design-Construct part that complements the Compile-Bu
 
 Kodos is a blueprint for an operating system.  You put it together!  We've just given you a bag of Legos and instruction booklet for everyone to follow.  Linux From Scratch does well to describe the instructions for each architechture.  Kodos mainstreams the LFS process.
 
-## Instructions from (Compressed)
+## Instructions to install from a (Compressed) Image
 
 Firsty, Kodos is initially set up for an Odroid U3.  Eventually, I'd like to get the more powerful ODroid XU3, but it just wasn't in my budget at the time.
 
