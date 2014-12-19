@@ -41,6 +41,11 @@ The following items you'll need to pick up from Amazon.  They must be exact.
 
 * [DROK LM2596 Adjustable DC Voltage Regulator](http://www.amazon.com/gp/product/B00BYTEHQO/) (Apparently this thing is supposed to come with a heat sink.  I did not know that.  I'll need to make that adjustment on mine.)
 * [Anker 2nd Gen Astro Pro2 20000mAh Portable External Battery Charger](http://www.amazon.com/gp/product/B005NGLTZQ/)
+* Enercell part 273-348: 6 feet of Adaptapower Power Cord. (22 Gauge wire, rated 24VDC @ 4A, 96W, 96VAC RMS, with an Adaptaplug socket on both ends.)
+* Enercell part 273-334: Adaptaplug tip A (2.35mm outer dia., 0.7mm inner dia.)
+* Enercell part 273-335: Adaptaplug tip B (4.0mm outer dia., 1.7mm inner dia.)
+
+Everything below this line needs to be rewritten.
 
 The following items you'll need to get from eBay. They must be exact!
 * [Motorola Atrix Lapdock](http://www.ebay.com/sch/i.html?_nkw=Motorola+Atrix+lapdock) - Discontinued, but there are plenty out there on eBay. These were designed for the Motorola Atrix phone for AT&T.  It is almost analagous to the Motorola Droid Bionic sold by Verizon except the Bionic's microUSB and micro HDMI ports are in a different order.  This incompatibility is what killed the Lapdock market, and makes most Lapdocks a great find for under $100. (I'm not sure if the lapdock for the Droid Bionic will work.  If you get that instead, let me know how that turns out.  Be sure that it comes with a charger!)
