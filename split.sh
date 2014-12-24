@@ -39,6 +39,7 @@ noprotocol=${URL##*://}			# Returns the opposite of protocol
 # TODO: What if there never was a protocol?  Return the URL, recognize it as a file path. I'll deal with it later.
 
 # DOMAIN
+# TODO: What about IP addresses?
 domain=${noprotocol%%/*}		# Returns the domain name, without path, including the port number if there is one
 domainname=${domain%%:*}		# Domain name without port number
 # domainsub=${domainname%.*}	# TODO: This needs work.  If it returns "www" count set to blank.  This should be the part before the domain's root word.
@@ -53,7 +54,7 @@ domainport=${domain##*:}		# Returns the domain port if there is one.
 # PATH
 urlfilepath=${noprotocol#*/}	# Everything after the first "/".  URLs should end with "/"
 filepath=${urlfilepath%/*}		# The file path not including the file.  File paths should ALWAYS end with "/" otherwise they will be interpreted as a file.
-filename=${urlfilename##*/}		# The file name.  Be aware that some directories have periods (".") in them.  TODO: If only there was some way to remotely detect if a file was a directory or file.  There might be, but I'm drawing a blank at the moment.
+filename=${urlfilepath##*/}		# The file name.  Be aware that some directories have periods (".") in them.  TODO: If only there was some way to remotely detect if a file was a directory or file.  There might be, but I'm drawing a blank at the moment.
 [[ $urlfilepath == $filepath ]] && filepath=""		# If there is no file path, set it to blank
 
 # FILE
@@ -70,4 +71,23 @@ if [[ -n $filename ]]; then
 	# These two variables I was think about using for things like tarballs.  I haven't decided what to do with this yet.
 	# filesubfix=
 	# filesuperfix=
+fi
+
+# TODO: Query (The part following a "?".  Attributes define by "&", keys and values separated by "=", value words separated by some character "+" or "%20" (space))
+
+# TODO: Target (The part following a "#".)
+
+echo "URL:           $URL"
+echo "Protocol Only: $protocolonly"
+echo "No Protocol:   $noprotocol"
+echo "Domain:        $domain"		# includes Port
+echo "Domain Name:   $domainname"	# Does not include port
+echo "Domain Root:   $domainroot"	# does not include a leading subdomain
+echo "Domain TLD:    $domaintld"	# The top-level domain
+echo "Domain Port:   $domainport"	# Port number
+echo "URL File Path: $urlfilepath"
+echo "File Path:     $filepath"
+echo "File Name:     $filename"
+if [[ -n $filename ]]; then
+ [[ -n $filesuffix ]] && echo "File Suffix:   $filesuffix"
 fi

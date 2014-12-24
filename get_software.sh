@@ -21,6 +21,9 @@
 # http://www.freedesktop.org/software/
 # https://pypi.python.org/pypi/ (For Python)
 # http://download.gimp.org/pub/ (For GIMP)
+# http://www.x.org/releases/X11R7.7/src/everything/
+# http://www.x.org/releases/individual/ (more bleeding edge stuff for X.Org. Use at your own risk!)
+# SECURITY NOTICE: Check http://www.x.org/wiki/Development/Security/ for security patches reguarding X.Org
 # DO NOT INCLUDE http://freecode.com/ links. The Freecode guys aren't updating anymore.
 urls = ( \
 "http://ftp.gnu.org/gnu/bash/bash-4.3.30.tar.gz" \
@@ -114,6 +117,8 @@ urls = ( \
 "http://mercurial.selenic.com/release/mercurial-3.2.2.tar.gz" \
 "https://bitbucket.org/dholth/pysdl2-cffi" \
 "https://bitbucket.org/marcusva/py-sdl2" \
+"https://www.kernel.org/pub/software/scm/git/git-2.2.0.tar.xz" \
+"https://www.kernel.org/pub/linux/kernel/v3.x/linux-3.18.1.tar.xz" \
 
 )		# This list will continue to grow.
 

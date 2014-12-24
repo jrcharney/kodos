@@ -9,6 +9,8 @@ Kodos is a Linux From Scratch distribution that allows you to do all the things 
 
 NOTE: This project is still in the process of gathering resources. Until this paragraph is removed, it might not be ideal to clone this git repo yet.
 
+I have a 'lite' version for Raspberry Pi in the works called [Kang](https://github.com/jrcharney/kang) which I hope will help in the creation of Kodos.
+
 ## Why do this? Aren't there restrictions?
 
 To heck with what the Unix and Linux beards think!  You want to use Linux and tell your OSX wannabe hacker friends you don't need a Mac to have an awesome operating system.  The parts are all there to make Linux awesome, unfortunately, most binary distributions choose to half-ass their approach and the result is you practically need to uninstall the entire damn operating system just to make one project you downloaded off GitHub work.
