@@ -1,3 +1,6 @@
+# Decomissioned!
+Merging kodos with [Rigel](https://github.com/jrcharney/rigel).
+
 kodos
 =====
 
